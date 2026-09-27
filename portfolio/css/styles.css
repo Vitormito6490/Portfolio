@@ -1,0 +1,1006 @@
+:root {
+    --text2: #000000;
+    --primary: #ffffff;
+    --secondary: #249167;
+    --accent: #01caa8;
+    --degrade: #000000;
+    --scroll: #54ffb5;
+    --bgskill: #04a6ac;
+}
+
+html {
+    scroll-behavior: smooth;
+    overflow-x: hidden;
+}
+
+body {
+    margin: 0;
+    overflow-x: hidden;
+    color: var(--text2);                    
+    font-family: sans-serif;
+}
+
+.topbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    box-sizing: border-box;
+    width: 100%;
+    z-index: 20;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 26px;
+    height: 72px;
+    padding: 0 20px;
+    background: rgba(7, 33, 49, 0.82);
+    border-bottom: 2px solid rgba(255, 255, 255, 0.15);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.18);
+    backdrop-filter: blur(6px);
+}
+
+.topbar__link {
+    font-family: 'OpenSans-Bold', sans-serif;
+    color: var(--primary);
+    text-decoration: none;
+    padding: 10px 18px;
+    border-radius: 8px;
+    transition: background 0.2s ease, transform 0.2s ease, color 0.2s ease;
+    font-size: 0.92rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+
+.topbar__link:hover,
+.topbar__link:focus-visible {
+    background: rgba(255, 255, 255, 0.14);
+    transform: translateY(-1px);
+    outline: none;
+}
+
+.theme-toggle {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 42px;
+    height: 42px;
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.08);
+    color: var(--primary);
+    cursor: pointer;
+    transition: transform 0.2s ease, background 0.2s ease;
+}
+
+.theme-toggle:hover,
+.theme-toggle:focus-visible {
+    background: rgba(255, 255, 255, 0.14);
+    transform: translateY(-1px);
+    outline: none;
+}
+
+.theme-toggle__icon {
+    font-size: 1.2rem;
+    line-height: 1;
+}
+
+@font-face {
+    font-family: 'Elektrix_bold';
+    src: url('../fontes/Elektrix_Bold.woff2') format('woff2');
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'OpenSans-Bold';
+    src: url('../fontes/OpenSans-Bold.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Minecraft-Font';
+    src: url('../fontes/Minecraft-ptbr.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+/* 1. SEÇÃO DO CÉU/menu */
+.menu {
+    position: relative;
+    height: 95vh;
+    background: linear-gradient(180deg, #0e61a5 0%, #2084d6 45%, #409ee0 100%);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    overflow: hidden;
+    transition: background 0.4s ease;
+}
+
+body.theme-night .menu {
+    background: linear-gradient(180deg,#0c1d30  0%, #182b44 42%,#07111f  100%);
+}
+
+.titulo {
+    position: relative;
+    z-index: 2;
+    font-family: 'Elektrix_bold', sans-serif;
+    margin: 0 100px;
+    font-weight: normal;
+    color: var(--primary);
+    font-size: 500%; 
+}
+
+.sol {
+    position: absolute;
+    right: 30px;
+    top: 55px;
+    width: 300px;   
+    
+}
+
+.nuvem1 {
+    position: absolute;
+    right: 630px;
+    top: 60px;
+    width: 300px;   
+    Height: 250px;
+}
+
+.nuvem2 {
+    position: absolute;
+    right: 380px;
+    top: 130px;
+    width: 300px;
+}
+
+.nuvem3 {
+    position: absolute;
+    right: 810px;
+    top: 260px;
+    width: 240px;
+}
+
+.horizonte {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    height: auto;
+    overflow: hidden;
+    z-index: 1;
+    pointer-events: none;
+}
+
+.horizonte img {
+    display: block;
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+}
+/* 2. SEÇÃO DA TERRA (Skills / Pista) */
+.skills {
+    min-height: 80vh;
+    background: linear-gradient(180deg, #348c31 12%, #216d2a 100%);
+    padding-bottom: 100px;
+    transition: background 0.4s ease;
+}
+
+body.theme-night .skills {
+    background: linear-gradient(180deg, #1f721c 12%, #216d2a 100%);
+}
+
+.barra {
+    width: 80%;             
+    height: 30px;
+    background: var(--primary);
+    margin: 100px auto; 
+    border-radius: 10px;
+}
+
+.texto-barra {
+    font-family: 'Elektrix_bold', sans-serif;
+    font-weight: bold;
+    margin: 0 24px 50px;
+    padding-top: 50px;
+    color: var(--primary);
+    text-align: center;
+}
+
+.flexquadrado {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 50px;           
+    padding: 10px 0;     
+    width: 100%;        
+    justify-content: center; 
+    max-width: 1400px;   
+    margin: 0 auto;
+}
+
+.skill-card {
+    width: 300px;
+    height: 300px;
+    transition: all 0.3s ease-in-out;
+}
+
+.skill-link:hover .skill-card,
+.skill-link:focus-visible .skill-card {
+    transform: translateY(-8px);
+}
+
+
+
+.skill-card__label {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.skill-link {
+    display: block;
+    text-decoration: none;
+}
+
+.skill-card-text {
+    position: relative;
+    top: 100px;
+    display: block;
+    width: 100%;
+    font-family: 'Minecraft-Font', sans-serif;
+    color: #000000;
+    margin-top: 10px;
+    z-index: 10; 
+    transition: transform 0.3s ease-in-out;
+    text-align: center;
+    font-size: 150%;
+
+}
+
+.skill-link:hover .skill-card-text,
+.skill-link:focus-visible .skill-card-text {
+    transform: translateY(-8px);
+}
+/* 3. SEÇÃO DO SUBSOLO */
+.subsolo {
+    position: relative;
+    isolation: isolate;
+    min-height: 100vh;
+    overflow: hidden;
+    padding: 100px 0;
+    color: var(--primary);
+    background: linear-gradient(180deg, #216d2a 0%, #5c3a21 20%, #2b170a 90%, #031605 100%);
+    font-family: 'Elektrix_bold', sans-serif;
+}
+
+body.theme-night .subsolo {
+    background: linear-gradient(180deg, #216d2a 0%, #2b170a 20%, #5c3a21 90%, #348c31 100%);
+}
+
+.subsolo__header,
+.projetos-container {
+    width: min(calc(100% - 48px), 1040px);
+    margin: 0 auto;
+}
+
+.subsolo__header {
+    margin-bottom: 56px;
+}
+
+.projetos-lista {
+    position: relative;
+    display: grid;
+    gap: 22px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.projetos-lista::before {
+    position: absolute;
+    top: 20px;
+    bottom: 20px;
+    left: 50%;
+    border-left: 2px solid rgb(230 197 146 / 55%);
+    content: '';
+}
+
+.projeto-item {
+    position: relative;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 80px minmax(0, 1fr);
+    align-items: start;
+    gap: 0;
+}
+
+.projeto-item::after {
+    position: absolute;
+    z-index: 0;
+    top: 34px;
+    left: calc(50% - 40px);
+    width: 40px;
+    border-top: 1px solid rgb(226 135 67 / 75%);
+    content: '';
+    pointer-events: none;
+}
+
+.projeto-profundidade {
+    position: relative;
+    z-index: 2;
+    display: grid;
+    grid-column: 2;
+    grid-row: 1;
+    width: 80px;
+    min-height: 100%;
+    place-items: start center;
+    padding-top: 48px;
+    color: #f0d4a7;
+    font-family: 'Minecraft-Font', sans-serif;
+    font-size: 0.9rem;
+    white-space: nowrap;
+}
+
+.projeto-profundidade::before {
+    position: absolute;
+    top: 26px;
+    left: 50%;
+    width: 12px;
+    height: 12px;
+    border: 2px solid #e5bd7d;
+    border-radius: 0;
+    background: #4b2e19;
+    box-shadow: 0 0 10px rgb(255 220 155 / 35%);
+    filter: brightness(var(--brilho-dia, 1));
+    transform: translateX(-50%);
+    transition: filter 300ms ease;
+    content: '';
+}
+
+body.theme-night .projeto-profundidade::before {
+    filter: brightness(var(--brilho-noite, 1));
+}
+
+.projeto-card {
+    position: relative;
+    z-index: 1;
+    grid-column: 1;
+    grid-row: 1;
+    min-width: 0;
+    padding: 28px 32px;
+    border: 1px solid rgb(25 24 22 / 95%);
+    border-left: 3px solid rgb(62 59 54 / 95%);
+    border-radius: 3px;
+    background:
+        repeating-linear-gradient(168deg, transparent 0 19px, rgb(255 255 255 / 2%) 20px, transparent 21px 36px),
+        repeating-linear-gradient(8deg, transparent 0 31px, rgb(0 0 0 / 8%) 32px, transparent 34px 58px),
+        linear-gradient(135deg, hsl(28 3% var(--card-lightness, 28%) / 92%), hsl(28 2% calc(var(--card-lightness, 28%) - 7%) / 95%) 55%, hsl(28 2% calc(var(--card-lightness, 28%) - 12%) / 97%));
+    box-shadow: inset 0 0 0 1px rgb(0 0 0 / 24%), 0 12px 28px rgb(0 0 0 / 30%);
+    transition: border-color 200ms ease, box-shadow 200ms ease, background 200ms ease, transform 200ms ease;
+    cursor: pointer;
+}
+
+.projeto-card:focus-visible {
+    outline: 2px solid #e2bf8d;
+    outline-offset: 4px;
+}
+
+.projeto-item:nth-child(even)::after {
+    left: 50%;
+}
+
+.projeto-item:nth-child(even) .projeto-card {
+    grid-column: 3;
+}
+
+.projeto-card:hover,
+.projeto-card:focus-within {
+    border-color: rgb(92 87 78 / 95%);
+    box-shadow: inset 0 0 0 1px rgb(0 0 0 / 30%), 0 16px 34px rgb(0 0 0 / 40%);
+    background:
+        repeating-linear-gradient(168deg, transparent 0 19px, rgb(255 255 255 / 2%) 20px, transparent 21px 36px),
+        repeating-linear-gradient(8deg, transparent 0 31px, rgb(0 0 0 / 8%) 32px, transparent 34px 58px),
+        linear-gradient(135deg, hsl(28 3% calc(var(--card-lightness, 28%) + 3%) / 93%), hsl(28 2% calc(var(--card-lightness, 28%) - 4%) / 96%) 55%, hsl(28 2% calc(var(--card-lightness, 28%) - 9%) / 98%));
+    transform: translateY(-5px);
+}
+
+.projeto-item:nth-child(odd) .projeto-card:hover,
+.projeto-item:nth-child(odd) .projeto-card:focus-within {
+    transform: translateY(-5px) rotate(-0.5deg);
+}
+
+.projeto-item:nth-child(even) .projeto-card:hover,
+.projeto-item:nth-child(even) .projeto-card:focus-within {
+    transform: translateY(-5px) rotate(0.5deg);
+}
+
+.projeto-card__indice {
+    margin: 0 0 10px;
+    color: #e2bf8d;
+    font-family: 'Minecraft-Font', sans-serif;
+    font-size: 0.8rem;
+}
+
+.projeto-card h3 {
+    margin: 0;
+    color: #fff0d1;
+    font-family: 'Elektrix_bold', sans-serif;
+    font-size: 2rem;
+    font-weight: normal;
+}
+
+.projeto-card__descricao {
+    max-width: 68ch;
+    margin: 14px 0 22px;
+    color: #e8d8bd;
+    font-family: sans-serif;
+    font-size: 1rem;
+    line-height: 1.7;
+}
+
+.projeto-card__rodape {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+}
+
+.projeto-techs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.projeto-techs li {
+    padding: 5px 10px;
+    border: 1px solid rgb(150 143 129 / 45%);
+    border-radius: 999px;
+    color: #d9d4c9;
+    background: rgb(35 34 31 / 72%);
+    font-family: sans-serif;
+    font-size: 0.75rem;
+}
+
+.projeto-link {
+    display: inline-flex;
+    min-height: 38px;
+    align-items: center;
+    justify-content: center;
+    padding: 8px 13px;
+    border: 1px solid #927759;
+    border-radius: 4px;
+    color: #ffe1bd;
+    background: linear-gradient(135deg, rgb(155 88 43 / 62%), rgb(92 53 30 / 76%));
+    box-shadow: 0 3px 8px rgb(0 0 0 / 28%);
+    font-family: 'Minecraft-Font', sans-serif;
+    font-size: 0.9rem;
+    text-decoration: none;
+    white-space: nowrap;
+    cursor: pointer;
+    transition: color 180ms ease, background 180ms ease, box-shadow 180ms ease, transform 180ms ease;
+}
+
+a.projeto-link::after {
+    padding-left: 7px;
+    content: '\2197';
+}
+
+.projeto-link:hover,
+.projeto-link:focus-visible {
+    border-color: #b49b7b;
+    color: #ffffff;
+    background: linear-gradient(135deg, rgb(92 83 69 / 94%), rgb(57 53 46 / 98%));
+    box-shadow: 0 5px 10px rgb(0 0 0 / 36%);
+    outline: none;
+    transform: translateY(-2px);
+}
+
+.projeto-link:active {
+    box-shadow: inset 0 2px 5px rgb(0 0 0 / 42%);
+    transform: translateY(1px);
+}
+
+.projeto-link--indisponivel {
+    appearance: none;
+}
+
+.projetos-modal[hidden] {
+    display: none;
+}
+
+.projetos-modal {
+    position: fixed;
+    z-index: 40;
+    inset: 0;
+    display: grid;
+    place-items: center;
+    padding: 24px;
+    background: rgb(0 0 0 / 78%);
+    backdrop-filter: blur(5px);
+}
+
+.projetos-modal__painel {
+    position: relative;
+    width: min(100%, 680px);
+    max-height: min(82vh, 760px);
+    overflow-y: auto;
+    padding: 38px;
+    border: 1px solid rgb(205 190 163 / 38%);
+    border-radius: 4px;
+    color: #e8dfd0;
+    background: linear-gradient(145deg, #28251f, #15130f 78%);
+    box-shadow: 0 24px 70px rgb(0 0 0 / 55%);
+    font-family: sans-serif;
+}
+
+.projetos-modal__fechar {
+    position: absolute;
+    top: 12px;
+    right: 14px;
+    width: 40px;
+    height: 40px;
+    border: 1px solid rgb(205 190 163 / 38%);
+    border-radius: 3px;
+    color: #eee4d4;
+    background: rgb(0 0 0 / 25%);
+    font-size: 1.7rem;
+    line-height: 1;
+    cursor: pointer;
+}
+
+.projetos-modal__fechar:hover,
+.projetos-modal__fechar:focus-visible {
+    border-color: #e2bf8d;
+    outline: none;
+}
+
+.projetos-modal__profundidade {
+    margin: 0 0 10px;
+    color: #d5b98f;
+    font-family: 'Minecraft-Font', sans-serif;
+}
+
+.projetos-modal__painel h2 {
+    margin: 0 48px 18px 0;
+    color: #fff0d1;
+    font-family: 'Elektrix_bold', sans-serif;
+    font-size: 2rem;
+    font-weight: normal;
+}
+
+.projetos-modal__descricao {
+    color: #d5d0c7;
+    line-height: 1.7;
+    white-space: pre-line;
+}
+
+.projetos-modal__painel h3 {
+    margin: 26px 0 12px;
+    color: #e2bf8d;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+}
+
+.projetos-modal__techs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin: 0 0 26px;
+    padding: 0;
+    list-style: none;
+}
+
+.projetos-modal__techs li {
+    padding: 5px 10px;
+    border: 1px solid rgb(150 143 129 / 45%);
+    border-radius: 999px;
+    color: #d9d4c9;
+    background: rgb(35 34 31 / 72%);
+    font-size: 0.8rem;
+}
+
+.projetos-modal__link {
+    display: inline-flex;
+    min-height: 40px;
+    align-items: center;
+    padding: 9px 14px;
+    border: 1px solid #927759;
+    border-radius: 3px;
+    color: #ffe1bd;
+    background: linear-gradient(135deg, rgb(92 69 48 / 94%), rgb(57 48 38 / 98%));
+    text-decoration: none;
+}
+
+.projetos-modal__link:hover,
+.projetos-modal__link:focus-visible {
+    border-color: #c2aa88;
+    color: #fff;
+    outline: none;
+}
+
+.projetos-modal__sem-link {
+    margin: 10;
+    color: #c4b397;
+}
+
+@media (max-width: 768px) {
+    .topbar {
+        gap: 12px;
+        padding: 0 12px;
+    }
+
+    .topbar__link {
+        padding: 8px 10px;
+        font-size: 0.72rem;
+        letter-spacing: 0.05em;
+    }
+
+    .titulo {
+        margin: 0 22px;
+        font-size: 320%;
+    }
+
+    .sol {
+        width: 200px;
+        right: 20px;
+    }
+
+    .nuvem1 {
+        right: 260px;
+        width: 200px;
+    }
+
+    .nuvem2 {
+        right: 120px;
+        width: 190px;
+    }
+
+    .nuvem3 {
+        right: 340px;
+        width: 180px;
+    }
+
+    .horizonte {
+        top: auto;
+        bottom: 0;
+        height: clamp(130px, 26vw, 220px);
+    }
+
+    .horizonte img {
+        width: 120%;
+        max-width: none;
+        margin-left: -10%;
+    }
+
+    .contato-form {
+        width: min(92vw, 560px);
+    }
+}
+
+@media (max-width: 480px) {
+    .topbar {
+        gap: 6px;
+        padding: 0 8px;
+    }
+
+    .topbar__link {
+        padding: 7px 8px;
+        font-size: 0.62rem;
+        letter-spacing: 0.03em;
+    }
+
+    .titulo {
+        margin: 0 18px;
+        font-size: 250%;
+    }
+
+    .sol {
+        width: 130px;
+        right: 12px;
+        top: 80px;
+    }
+
+    .nuvem1,
+    .nuvem2,
+    .nuvem3 {
+        display: none;
+    }
+
+    .horizonte {
+        position: absolute;
+        left: 50%;
+        right: auto;
+        bottom: 0;
+        width: 150%;
+        height: auto;
+        transform: translateX(-50%);
+        overflow: hidden;
+    }
+
+    .horizonte img {
+        display: block;
+        width: 100%;
+        height: auto;
+        max-width: none;
+        object-fit: cover;
+        object-position: bottom center;
+        margin: 0;
+    }
+
+    .contato-form {
+        width: min(94vw, 560px);
+    }
+}
+
+/* 4. SEÇÃO DO JAPÃO */
+.japao {
+    min-height: 100vh;
+    background: linear-gradient(180deg, #0a020f 0%, #12041d 25%, #1f0833 100%);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    padding: 100px 0 20px 0;
+    color: var(--primary);
+    font-family: 'Elektrix_bold', sans-serif;
+    transition: background 0.4s ease;
+}
+
+body.theme-night .japao {
+     background: linear-gradient(180deg, #409ee0 0%, #2084d6 45%,#0e61a5 100%);
+}
+
+.titulo-secao {
+    text-align: center;
+    font-size: 200%;
+}
+
+.contato-form {
+    display: grid;
+    gap: 18px;
+    width: min(calc(100% - 40px), 560px);
+    margin: 36px auto;
+    color: #eee4f2;
+    font-family: sans-serif;
+}
+
+.contato-form__campo {
+    display: grid;
+    gap: 7px;
+}
+
+.contato-form__campo label {
+    color: #e5cfe8;
+    font-family: 'open-sans', sans-serif;
+    font-size: 1em;
+}
+
+.contato-form__campo input,
+.contato-form__campo textarea {
+    box-sizing: border-box;
+    width: 100%;
+    padding: 12px 14px;
+    border: 1px solid rgb(220 199 228 / 42%);
+    border-radius: 3px;
+    color: #fff;
+    background: rgb(8 4 15 / 56%);
+    font: inherit;
+}
+
+.contato-form__campo input {
+    min-height: 46px;
+}
+
+.contato-form__campo textarea {
+    min-height: 140px;
+    resize: vertical;
+}
+
+.contato-form__campo input:focus-visible,
+.contato-form__campo textarea:focus-visible {
+    border-color: #e5b7cb;
+    outline: 2px solid rgb(229 183 203 / 38%);
+    outline-offset: 2px;
+}
+
+.contato-form__submit {
+    justify-self: start;
+    min-height: 44px;
+    padding: 10px 18px;
+    border: 1px solid #d9a7bb;
+    border-radius: 3px;
+    color: #fff6fa;
+    background: linear-gradient(135deg, #481555, #44213f);
+    font-family: 'elektrix_bold', sans-serif;
+    font-size: 1em;
+    cursor: pointer;
+    transition: background 160ms ease, transform 160ms ease, opacity 160ms ease;
+}
+
+.contato-form__submit:hover,
+.contato-form__submit:focus-visible {
+    background: linear-gradient(135deg, #76258a, #6e3766);
+    outline: 2px solid rgba(122, 55, 84, 0.596);
+    outline-offset: 2px;
+    transform: translateY(-1px);
+}
+
+.contato-form__submit:disabled {
+    opacity: 0.65;
+    cursor: wait;
+    transform: none;
+}
+
+.contato-form__status {
+    min-height: 1.5em;
+    margin: 0;
+    color: #e8d9ed;
+    font-family: sans-serif;
+    font-size: 0.95rem;
+    line-height: 1.5;
+}
+
+.contato-form__status[data-state="success"] {
+    color: #c3e2c2;
+}
+
+.contato-form__status[data-state="error"] {
+    color: #ffd0cf;
+}
+
+body.theme-night .contato-form {
+    color: #e5f3ff;
+}
+
+body.theme-night .contato-form__campo label {
+    color: var(--primary);
+}
+
+body.theme-night .contato-form__campo input,
+body.theme-night .contato-form__campo textarea {
+    border-color: rgb(174 219 249 / 48%);
+    color: var(--primary);
+    background: rgb(5 25 52 / 78%);
+}
+
+body.theme-night .contato-form__campo input:focus-visible,
+body.theme-night .contato-form__campo textarea:focus-visible {
+    border-color: #9cdbff;
+    outline-color: rgb(156 219 255 / 42%);
+}
+
+body.theme-night .contato-form__submit {
+    border-color: #95d5fb;
+    color: var(--primary);
+    background: linear-gradient(135deg, #277bb6, #123b72);
+}
+
+body.theme-night .contato-form__submit:hover,
+body.theme-night .contato-form__submit:focus-visible {
+    background: linear-gradient(135deg, #3c91ca, #1c558e);
+    outline-color: rgb(156 219 255 / 42%);
+}
+
+body.theme-night .contato-form__status {
+    color: #e2f1ff;
+}
+
+body.theme-night .contato-form__status[data-state="success"] {
+    color: #c3f0df;
+}
+
+body.theme-night .contato-form__status[data-state="error"] {
+    color: #ffd7d7;
+}
+
+/* Scrollbar estilizada */
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: #2e2e2e; 
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--primary); 
+    border-radius: 10px;
+    border: 2px solid #2e2e2e; 
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--scroll); 
+}
+
+#footer-text {
+    display: flex;
+    justify-content: center;
+    color: var(--primary);
+}
+
+/* Modal */
+.modal[hidden] {
+    display: none;
+}
+
+.modal {
+    position: fixed;
+    inset: 0;
+    z-index: 10;
+    display: grid;
+    place-items: center;
+    padding: 24px;
+    background: rgb(0 0 0 / 80%);
+}
+
+.modal__content {
+    display: grid;
+    justify-items: center;
+    gap: 22px;
+    width: min(100%, 980px);
+    padding: 0;
+    color: #000000;
+    text-align: center;
+    background: transparent;
+}
+
+.modal__oak {
+    position: relative;
+    bottom: 100px;
+    width: 60%;
+}
+
+.modal__oak-image {
+    display: block;
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+    filter: brightness(1.8);
+}
+
+.modal__text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 50%;
+    transform: translate(-50%, -15%);
+}
+
+.modal__text p {
+    margin: 0;
+    color: #000000;
+    font-family: 'Minecraft-Font', sans-serif;
+    font-size: 2.2em;
+    line-height: 1.35;
+    
+}
+
+.modal__close {
+    width: 80%;
+    padding: 0;
+    background: transparent;
+    border: 0;
+    cursor: pointer;
+}
+
+.modal__close img {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+.modal__close:hover,
+.modal__close:focus-visible {
+    filter: brightness(1.2);
+    outline: none;
+}
+
+.modal-is-open {
+    overflow: hidden;
+}
